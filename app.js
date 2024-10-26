@@ -4,6 +4,8 @@ const session = require('express-session');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const authRoutes = require('./routes/authRoutes');
+const messagesRoutes = require('./routes/messagesRoutes');
+const bcrypt = require('bcryptjs');
 const app = express();
 const PORT = 3000;
 const pool = require('./utils/db');
@@ -61,8 +63,9 @@ app.use((req, res, next) => {
     next();
 });
 
-// Use the authRoutes for all routes
 app.use('/', authRoutes);
+
+app.use('/messages', messagesRoutes);
 
 app.use((err, req, res, next) => {
     console.error(err.stack);

@@ -1,5 +1,6 @@
 // controllers/authController.js
 const bcrypt = require('bcryptjs');
+const passport = require('passport');
 const { body, validationResult } = require('express-validator');
 const pool = require('../utils/db'); // Adjust this path to where your Pool is defined
 
@@ -54,6 +55,7 @@ exports.postLogin = (req, res, next) => {
         if (!user) {
             return res.render('login', {
                 error: 'Invalid email or password.',
+                errors: null,
             });
         }
         req.logIn(user, (err) => {
