@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <h1>membership</h1>
+        <p>To become a member, answer the following:</p>
+
+        <h3>What has keys but can't open locks?</h3>
+
+        <form action="/messages/membership" method="POST">
+            <input
+                type="text"
+                name="riddleAnswer"
+                placeholder="Your answer"
+                required
+            />
+            <button type="submit">Submit</button>
+        </form>
+
+        <% if (typeof message !== 'undefined' && message) { %>
+        <p><%= message %></p>
+        <% } %> <% if (typeof isMember !== 'undefined' && isMember) { %>
+        <a href="/messages">Return to messages</a>
+        <% } %>
+    </body>
+</html>

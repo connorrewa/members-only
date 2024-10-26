@@ -46,7 +46,6 @@ router.post(
     ],
     authController.postLogin
 );
-router.get('/logout', authController.logout);
-router.get('/messages', authController.getMessages);
+router.post('/logout', authController.logout);
 
 module.exports = router;

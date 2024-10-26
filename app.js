@@ -9,6 +9,7 @@ const bcrypt = require('bcryptjs');
 const app = express();
 const PORT = 3000;
 const pool = require('./utils/db');
+const isAuthenticated = require('./middleware/auth');
 require('dotenv').config();
 
 app.set('views', __dirname + '/views');
@@ -65,7 +66,7 @@ app.use((req, res, next) => {
 
 app.use('/', authRoutes);
 
-app.use('/messages', messagesRoutes);
+app.use('/messages', isAuthenticated, messagesRoutes);
 
 app.use((err, req, res, next) => {
     console.error(err.stack);

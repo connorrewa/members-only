@@ -67,10 +67,6 @@ exports.postLogin = (req, res, next) => {
     })(req, res, next);
 };
 
-exports.getMessages = (req, res) => {
-    res.render('messages');
-};
-
 exports.logout = (req, res, next) => {
     req.logout((err) => {
         if (err) {

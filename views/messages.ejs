@@ -7,17 +7,26 @@
     </head>
     <body>
         <h1>Messages</h1>
+        <div>
+            <p>Logged in as: <span><%= currentUser.first_name %></span></p>
 
-        <% if (currentUser) { %>
-        <p>Logged in as: <span><%= currentUser.first_name %></span></p>
-
-        <!-- Logout Form -->
-        <form action="/messages/logout" method="POST" style="display: inline">
-            <button type="submit">Logout</button>
-        </form>
-        <% } else { %>
-        <p>You are not logged in.</p>
-        <a href="/">Go to login</a>
-        <% } %>
+            <form action="/logout" method="POST" style="display: inline">
+                <button type="submit">Logout</button>
+            </form>
+            <h2>Your Messages:</h2>
+            <ul>
+                <% messages.forEach(function(message) { %>
+                <li>
+                    <h3><%= message.title %></h3>
+                    <p><%= message.text %></p>
+                    <% if (membershipStatus) { %>
+                    <br /><small>Author: <%= message.author_name %></small>
+                    <% } %>
+                </li>
+                <% }); %>
+            </ul>
+            <a href="/messages/new">Make new message</a>
+            <a href="/messages/membership">Become a member to see authors</a>
+        </div>
     </body>
 </html>
