@@ -6,21 +6,28 @@
     </head>
     <body>
         <h1>Sign Up</h1>
+        <% if (errors) { %>
+        <ul>
+            <% errors.forEach(error => { %>
+            <li style="color: red"><%= error.msg %></li>
+            <% }) %>
+        </ul>
+        <% } %>
         <form action="/signup" method="POST">
             <!-- Ensure the action points to your signup route -->
-            <label for="firstName">First Name</label>
+            <label for="firstname">First Name</label>
             <input
-                id="firstName"
-                name="firstName"
+                id="firstname"
+                name="firstname"
                 placeholder="First Name"
                 type="text"
                 required
             />
 
-            <label for="lastName">Last Name</label>
+            <label for="lastname">Last Name</label>
             <input
-                id="lastName"
-                name="lastName"
+                id="lastname"
+                name="lastname"
                 placeholder="Last Name"
                 type="text"
                 required

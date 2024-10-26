@@ -1,15 +1,13 @@
+// app.js
 const express = require('express');
-const { Pool } = require('pg');
 const session = require('express-session');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
+const authRoutes = require('./routes/authRoutes');
 const app = express();
-const bcrypt = require('bcryptjs');
-
 const PORT = 3000;
+const pool = require('./utils/db');
 require('dotenv').config();
-
-const pool = new Pool({});
 
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
@@ -63,48 +61,8 @@ app.use((req, res, next) => {
     next();
 });
 
-app.get('/', (req, res) => {
-    res.render('login');
-});
-
-app.get('/signup', (req, res) => {
-    res.render('signUp');
-});
-
-app.get('/logout', (req, res, next) => {
-    req.logout((err) => {
-        if (err) {
-            return next(err);
-        }
-        res.redirect('/');
-    });
-});
-
-app.post('/signup', async (req, res, next) => {
-    try {
-        bcrypt.hash(req.body.password, 10, async (err, hashedPassword) => {
-            if (err) {
-                return next(err);
-            }
-            const { firstName, lastName } = req.body;
-            await pool.query(
-                'INSERT INTO users (email, password, first_name, last_name) VALUES ($1, $2, $3, $4)',
-                [req.body.username, hashedPassword, firstName, lastName]
-            );
-            res.redirect('/');
-        });
-    } catch (err) {
-        return next(err);
-    }
-});
-
-app.post(
-    '/login',
-    passport.authenticate('local', {
-        successRedirect: '/',
-        failureRedirect: '/',
-    })
-);
+// Use the authRoutes for all routes
+app.use('/', authRoutes);
 
 app.use((err, req, res, next) => {
     console.error(err.stack);
