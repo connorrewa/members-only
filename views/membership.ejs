@@ -3,10 +3,10 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
+        <title>Become a Member</title>
     </head>
     <body>
-        <h1>membership</h1>
+        <h1>Membership</h1>
         <p>To become a member, answer the following:</p>
 
         <h3>What has keys but can't open locks?</h3>
@@ -23,6 +23,8 @@
 
         <% if (typeof message !== 'undefined' && message) { %>
         <p><%= message %></p>
+        <% } %> <% if (typeof hint !== 'undefined' && hint) { %>
+        <p>Hint: <%= hint %></p>
         <% } %> <% if (typeof isMember !== 'undefined' && isMember) { %>
         <a href="/messages">Return to messages</a>
         <% } %>
