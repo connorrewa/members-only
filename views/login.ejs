@@ -3,9 +3,30 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
+        <title>Login</title>
     </head>
     <body>
-        <h1>login</h1>
+        <h1>Login</h1>
+        <form action="/login" method="POST">
+            <label for="username">Username</label>
+            <input
+                id="username"
+                name="username"
+                placeholder="username"
+                type="text"
+                required
+            />
+
+            <label for="password">Password</label>
+            <input id="password" name="password" type="password" required />
+
+            <button type="submit">Log In</button>
+        </form>
+        <% if (currentUser) { %>
+        <p>Logged in as: <span><%= currentUser.first_name %></span></p>
+        <% } else { %>
+        <p>You are not logged in.</p>
+        <% } %>
+        <a href="/signup">Sign up</a>
     </body>
 </html>

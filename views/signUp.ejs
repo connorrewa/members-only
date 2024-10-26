@@ -2,21 +2,44 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <title></title>
+        <title>Sign Up</title>
     </head>
     <body>
         <h1>Sign Up</h1>
-        <form action="" method="POST">
-            <label for="username">Username</label>
+        <form action="/signup" method="POST">
+            <!-- Ensure the action points to your signup route -->
+            <label for="firstName">First Name</label>
+            <input
+                id="firstName"
+                name="firstName"
+                placeholder="First Name"
+                type="text"
+                required
+            />
+
+            <label for="lastName">Last Name</label>
+            <input
+                id="lastName"
+                name="lastName"
+                placeholder="Last Name"
+                type="text"
+                required
+            />
+
+            <label for="username">Email</label>
             <input
                 id="username"
                 name="username"
-                placeholder="username"
-                type="text"
+                placeholder="Username"
+                type="email"
+                required
             />
+
             <label for="password">Password</label>
-            <input id="password" name="password" type="password" />
-            <button>Sign Up</button>
+            <input id="password" name="password" type="password" required />
+
+            <button type="submit">Sign Up</button>
         </form>
+        <p>Already have an account? <a href="/">Log in</a></p>
     </body>
 </html>
