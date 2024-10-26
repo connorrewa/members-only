@@ -18,6 +18,7 @@ app.set('view engine', 'ejs');
 app.use(session({ secret: 'cats', resave: false, saveUninitialized: false }));
 app.use(passport.session());
 app.use(express.urlencoded({ extended: false }));
+app.use(express.static('public'));
 
 passport.use(
     new LocalStrategy(async (username, password, done) => {

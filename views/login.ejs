@@ -3,6 +3,8 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link href="./css/output.css" rel="stylesheet" />
+
         <title>Login</title>
     </head>
     <body>
@@ -16,7 +18,7 @@
             <% }) %>
         </ul>
         <% } %>
-        <form action="/login" method="POST">
+        <form class="bg-black" action="/login" method="POST">
             <label for="username">Username</label>
             <input
                 id="username"
@@ -29,7 +31,9 @@
             <label for="password">Password</label>
             <input id="password" name="password" type="password" required />
 
-            <button type="submit">Log In</button>
+            <button class="bg-blue-500 text-white p-2 rounded" type="submit">
+                Log In
+            </button>
         </form>
         <% if (currentUser) { %>
         <p>Logged in as: <span><%= currentUser.first_name %></span></p>
