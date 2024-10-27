@@ -13,8 +13,6 @@ router.get('/new', messagesController.getNewMessage);
 
 router.post('/new', messagesController.postNewMessage);
 
-router.post('/logout', messagesController.postLogout);
-
 router.post('/membership', messagesController.postMembership);
 
 module.exports = router;

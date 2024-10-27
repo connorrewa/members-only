@@ -6,21 +6,44 @@
         <link href="/css/output.css" rel="stylesheet" />
         <title>Become a Member</title>
     </head>
-    <body>
-        <h1>Membership</h1>
-        <p>To become a member, answer the following:</p>
+    <body class="w-full bg-zinc-200">
+        <nav
+            class="bg-gray-100 b w-full border-b-2 border-black sticky top-0 z-50 mb-12"
+        >
+            <div
+                class="max-w-screen flex flex-col md:flex-row items-center justify-between mx-auto p-6"
+            >
+                <a class="hover:underline" href="/messages">Back to messages</a>
+            </div>
+        </nav>
+        <h1 class="text-3xl text-blue-600 font-bold text-center mb-4">
+            Membership
+        </h1>
+        <p class="text-center">To become a member, answer the following:</p>
 
-        <h3>What has keys but can't open locks?</h3>
+        <div class="max-w-xl mx-auto p-6">
+            <form
+                class="flex flex-col gap-4 mt-4 rounded-lg bg-white shadow-lg shadowgray-500 p-6"
+                action="/messages/membership"
+                method="POST"
+            >
+                <h4 class="text-lg">What has keys but can't open locks?</h3>
 
-        <form action="/messages/membership" method="POST">
-            <input
-                type="text"
-                name="riddleAnswer"
-                placeholder="Your answer"
-                required
-            />
-            <button type="submit">Submit</button>
-        </form>
+                <input
+                    type="text"
+                    name="riddleAnswer"
+                    placeholder="Your answer"
+                    class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    required
+                />
+                <button
+                    class="bg-blue-600 hover:bg-blue-700 text-white p-2 rounded w-full"
+                    type="submit"
+                >
+                    Submit
+                </button>
+            </form>
+        </div>
 
         <% if (typeof message !== 'undefined' && message) { %>
         <p><%= message %></p>

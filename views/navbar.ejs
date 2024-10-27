@@ -1,0 +1,18 @@
+<nav class="bg-gray-100 b w-full border-b-2 border-black sticky top-0 z-50">
+    <div
+        class="max-w-screen flex flex-col md:flex-row items-center justify-between mx-auto p-6"
+    >
+        <h1 class="text-4xl font-semibold text-blue-600 mb-2 md:mb-0">
+            Messages
+        </h1>
+        <div class="flex flex-col md:flex-row gap-2 md:gap-6 text-center">
+            <a class="hover:underline" href="/messages/new">Create new post</a>
+            <a class="hover:underline" href="/messages/membership"
+                >Become a member</a
+            >
+            <form action="/logout" method="POST" style="display: inline">
+                <button class="hover:underline" type="submit">Logout</button>
+            </form>
+        </div>
+    </div>
+</nav>
