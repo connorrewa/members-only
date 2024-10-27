@@ -3,43 +3,74 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link href="./css/output.css" rel="stylesheet" />
+        <link href="/css/output.css" rel="stylesheet" />
 
         <title>Login</title>
     </head>
-    <body>
-        <h1>Login</h1>
-        <% if (error) { %>
-        <p style="color: red"><%= error %></p>
-        <% } %> <% if (errors) { %>
-        <ul>
-            <% errors.forEach(error => { %>
-            <li style="color: red"><%= error.msg %></li>
-            <% }) %>
-        </ul>
-        <% } %>
-        <form class="bg-black" action="/login" method="POST">
-            <label for="username">Username</label>
-            <input
-                id="username"
-                name="username"
-                placeholder="username"
-                type="text"
-                required
-            />
+    <body
+        class="w-full h-screen bg-zinc-200 flex flex-col items-center justify-center"
+    >
+        <h1
+            class="text-4xl md:text-5xl text-blue-600 text-center font-bold tracking-wide mb-2"
+        >
+            Messaging Members
+        </h1>
+        <p class="text-center text-lg mb-2">Log in to view messages</p>
+        <div class="w-full max-w-md px-4">
+            <form
+                class="flex flex-col gap-4 mt-4 rounded-lg bg-white shadow-lg shadowgray-500 p-6"
+                action="/"
+                method="POST"
+            >
+                <% if (error) { %>
+                <p style="color: red"><%= error %></p>
+                <% } %> <% if (errors) { %>
+                <ul>
+                    <% errors.forEach(error => { %>
+                    <li style="color: red"><%= error.msg %></li>
+                    <% }) %>
+                </ul>
+                <% } %>
+                <div>
+                    <label for="username">Email</label>
+                    <input
+                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        id="username"
+                        name="username"
+                        placeholder="Email address"
+                        type="text"
+                        required
+                    />
+                </div>
+                <div>
+                    <label for="password">Password</label>
+                    <input
+                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        id="password"
+                        placeholder="Password"
+                        name="password"
+                        type="password"
+                        required
+                    />
+                </div>
 
-            <label for="password">Password</label>
-            <input id="password" name="password" type="password" required />
-
-            <button class="bg-blue-500 text-white p-2 rounded" type="submit">
-                Log In
-            </button>
-        </form>
-        <% if (currentUser) { %>
+                <button
+                    class="bg-blue-600 text-white p-2 rounded"
+                    type="submit"
+                >
+                    Log In
+                </button>
+                <a
+                    href="/signup"
+                    class="text-center text-blue-600 font-semibold hover:underline"
+                    >Don't have an account yet? Sign up</a
+                >
+            </form>
+        </div>
+        <!-- <% if (currentUser) { %>
         <p>Logged in as: <span><%= currentUser.first_name %></span></p>
         <% } else { %>
         <p>You are not logged in.</p>
-        <% } %>
-        <a href="/signup">Sign up</a>
+        <% } %> -->
     </body>
 </html>

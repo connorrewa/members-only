@@ -32,7 +32,7 @@ router.post(
     authController.postSignup
 );
 router.post(
-    '/login',
+    '/',
     [
         body('username')
             .isEmail()

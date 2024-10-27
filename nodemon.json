@@ -1,0 +1,4 @@
+{
+    "watch": ["views/**/*.ejs"],
+    "ext": "js,json,ejs"
+  }
